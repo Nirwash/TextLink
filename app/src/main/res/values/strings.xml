@@ -3,4 +3,6 @@
     <string name="full_text">By pressing next button you confirm the agreement and privacy policy.</string>
     <string name="confidential">agreement</string>
     <string name="policy">privacy policy</string>
+    <string name="go_to_condifential">Go to agreement</string>
+    <string name="go_to_policy">Go to privacy policy</string>
 </resources>

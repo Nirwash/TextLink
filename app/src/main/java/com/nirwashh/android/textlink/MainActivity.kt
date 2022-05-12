@@ -19,6 +19,11 @@ class MainActivity : AppCompatActivity() {
         b = ActivityMainBinding.inflate(layoutInflater)
         setContentView(b.root)
 
+        spannableText()
+
+    }
+
+    private fun spannableText() {
         val fullText = getString(R.string.full_text)
         val confidential = getString(R.string.confidential)
         val startIndexOfConfidential = fullText.indexOf(confidential)
@@ -27,6 +32,8 @@ class MainActivity : AppCompatActivity() {
         val startIndexOfPolicy = fullText.indexOf(policy)
         val endIndexOfPolicy = startIndexOfPolicy + policy.length
         val spannableString = SpannableString(fullText)
+        val goToConfidential = getString(R.string.go_to_condifential)
+        val goToPolicy = getString(R.string.go_to_policy)
         val confidentialClickable = object : ClickableSpan() {
             override fun updateDrawState(ds: TextPaint) {
                 ds.isUnderlineText = true
@@ -34,8 +41,10 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onClick(p0: View) {
-                Toast.makeText(this@MainActivity, "Go to \"confidential\"",
-                    Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this@MainActivity, goToConfidential,
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
         val policyClickable = object : ClickableSpan() {
@@ -45,22 +54,27 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onClick(p0: View) {
-                Toast.makeText(this@MainActivity, "Go to \"privacy police\"",
-                    Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this@MainActivity, goToPolicy,
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
 
-        spannableString.setSpan(confidentialClickable, startIndexOfConfidential,
+        spannableString.setSpan(
+            confidentialClickable, startIndexOfConfidential,
             endIndexOfConfidential,
-        Spanned.SPAN_EXCLUSIVE_INCLUSIVE)
-        spannableString.setSpan(policyClickable, startIndexOfPolicy,
+            Spanned.SPAN_EXCLUSIVE_INCLUSIVE
+        )
+        spannableString.setSpan(
+            policyClickable, startIndexOfPolicy,
             endIndexOfPolicy,
-        Spanned.SPAN_EXCLUSIVE_INCLUSIVE)
+            Spanned.SPAN_EXCLUSIVE_INCLUSIVE
+        )
 
         b.tvAgreement.text = spannableString
         b.tvAgreement.movementMethod = LinkMovementMethod.getInstance()
         b.tvAgreement.highlightColor = Color.TRANSPARENT
-
     }
 
 }
