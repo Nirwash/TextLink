@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TextLink</string>
+    <string name="full_text">Нажимая на кнопку вы подтверждаете что ознакомились с условиями использования и политикой конфиденциальности.</string>
+    <string name="confidential">условиями использования</string>
+    <string name="policy">политикой конфиденциальности</string>
+</resources>
